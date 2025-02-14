@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cozy Task Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="trashCan" class="trash-can">
+            🗑️
+        </div>
+        <header>
+            <h1>Little Wins, Big Progress 🚀</h1>
+            <p>Stay on track, one task at a time</p>
+        </header>
+
+        <div class="task-input">
+            <input type="text" id="taskInput" class="task-field" placeholder="Add a new task...">
+            <button id="addTaskBtn" class="add-task-btn">➕ Add Task</button>
+        </div>
+
+        <div class="task-bins-container">
+            <div class="grid-layout">
+                <div class="bin" id="q1" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <h2>Urgent & Important</h2>
+                    <p>🔥 Fire to Put Out!</p>
+                    <!-- <p class="tip">Do it immediately</p> -->
+                </div>
+                <div class="bin" id="q2" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <h2>Important but Not Urgent</h2>
+                    <p>Big Goals, No Rush!</p>
+                    <!-- <p class="tip">Schedule it for later</p> -->
+                </div>
+                <div class="bin" id="q3" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <h2>Urgent but Not Important</h2>
+                    <p>Not Worth the Stress!</p>
+                    <!-- <p class="tip">Delegate or minimize</p> -->
+                </div>
+                <div class="bin" id="q4" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <h2>Not Urgent & Not Important</h2>
+                    <p>Energy Drainers 💤"</p>
+                    <!-- <p class="tip">Eliminate or reduce</p> -->
+                </div>
+            </div>
+        </div>
+        <div class="completed-bin" id="completed" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>Completed ✅</h2>
+            <p>Woohoo! You Did It! ✨</p>
+            <audio id="completedAudio" src="assets/completed.mp3"></audio>
+        </div>
+
+        <div class="pomodoro-widget" id="pomodoroWidget">
+            <audio id="pomodoroAudio" src="assets/notification_sound.mp3"></audio>
+            <button class="minimize-btn">−</button>
+            
+            <h2>Pomodoro Timer</h2>
+            <div class="pomodoro-options">
+                <button id="workMode" class="cute-btn active">🌸 Work (53 min)</button>
+                <button id="breakMode" class="cute-btn">☕ Break (17 min)</button>
+            </div>
+            <div class="circle-container">
+                <div class="circle-timer">
+                    <span id="timer-display" class="timer-center">53:00</span>
+                </div>
+            </div>
+            <div class="pomodoro-controls">
+                <input type="number" id="custom-timer" placeholder="Set minutes" min="1" class="cute-input">
+                <button id="startTimer" class="cute-btn">▶️ Start</button>
+                <button id="pauseTimer" class="cute-btn">⏸ Pause</button>
+                <button id="resetTimer" class="cute-btn">🔄 Reset</button>
+            </div>
+        </div>
+
+        <button id="showBreathing" class="floating-button">🧘 feeling stressed?</button>
+        <div class="calm-overlay" id="calmOverlay">
+            <audio id="breathingAudio" src="assets/breathe.mp3" loop></audio>
+            <div class="breathing-content">
+                <button id="closeBreathing" class="close-button">❌</button>
+                <h2>Box Breathing</h2>
+                <lottie-player id="breathingAnimation" 
+                    src="https://lottie.host/4706f7b9-a902-47b4-8494-919545672a3b/jR41OYk9m7.json" 
+                    background="transparent" 
+                    speed="1" 
+                    style="width: 300px; height: 300px;" 
+                    loop 
+                    autoplay>
+                </lottie-player>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
